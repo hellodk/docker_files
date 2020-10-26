@@ -24,7 +24,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 	tar \
 	unzip \
 	wget \
-        python3-pip \
+    python3-pip \
 	vim && \
     apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
@@ -45,7 +45,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 RUN wget -q -O spark.tgz http://mirror.olnevhost.net/pub/apache/spark/spark-${SPARK_VER}/spark-${SPARK_VER}-bin-hadoop2.7.tgz && \
 	mkdir -p /usr/local && tar -xf spark.tgz -C /usr/local && \
 	mv /usr/local/spark*${SPARK_VER}* /usr/local/spark && \
-    	pip3 install --upgrade pyspark
+    pip3 install --upgrade pyspark
 
 # Clean up
 RUN rm -rf /root/* && chmod 755 /root
@@ -66,14 +66,36 @@ ENV PYTHONPATH=/usr/local/spark/python:/usr/local/spark/python/lib/py4j-0.10.7-s
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/spark/bin
 
+EXPOSE 4040 4041 8080 8888 
+
+ARG TF_SERVING_VERSION=0.0.0
+ARG TF_SERVING_VERSION=0.0.0
+ARG NB_USER=jovyan
+USER root
+
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV NB_USER $NB_USER
+
+ENV NB_UID 1000
+ENV HOME /home/$NB_USER
+ENV NB_PREFIX /
+ENV PATH $HOME/.local/bin:$PATH
+
 COPY aws-java-sdk-1.7.4.jar $SPARK_HOME/jars/
 COPY hadoop-aws-2.7.3.jar $SPARK_HOME/jars/
 COPY jets3t-0.9.4.jar $SPARK_HOME/jars/
 COPY java-xmlbuilder-1.3.jar $SPARK_HOME/jars/
+# Use bash instead of sh
+SHELL ["/bin/bash", "-c"]
 
-
-
-EXPOSE 4040 4041 8080 8888 
+# Create NB_USER user with UID=1000 and in the 'users' group
+# but allow for non-initial launches of the notebook to have
+# $HOME provided by the contents of a PV
+#RUN useradd -M -s /bin/bash -N -u $NB_UID $NB_USER
+RUN chown -R ${NB_USER}:users /usr/local/bin
+RUN mkdir -p $HOME
+RUN chown -R ${NB_USER}:users ${HOME}
 
 EXPOSE 8888
 
