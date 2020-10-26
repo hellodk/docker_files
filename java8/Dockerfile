@@ -92,7 +92,7 @@ SHELL ["/bin/bash", "-c"]
 # Create NB_USER user with UID=1000 and in the 'users' group
 # but allow for non-initial launches of the notebook to have
 # $HOME provided by the contents of a PV
-#RUN useradd -M -s /bin/bash -N -u $NB_UID $NB_USER
+RUN useradd -M -s /bin/bash -N -u $NB_UID $NB_USER
 RUN chown -R ${NB_USER}:users /usr/local/bin
 RUN mkdir -p $HOME
 RUN chown -R ${NB_USER}:users ${HOME}
