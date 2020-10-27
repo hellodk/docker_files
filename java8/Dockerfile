@@ -102,7 +102,8 @@ EXPOSE 8888
 USER jovyan
 
 # ENTRYPOINT ["/usr/local/bin/jupyter"]
-ENTRYPOINT ["tini", "--"]
+# ENTRYPOINT ["tini", "--"]
 
+ENV NB_PREFIX /
 # CMD ["notebook", "--no-browser", "--allow-root", "--ip=0.0.0.0", "--port=8888"]
 CMD ["sh","-c", "jupyter notebook --notebook-dir=/home/${NB_USER} --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]
