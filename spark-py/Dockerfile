@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+#FROM openjdk:8-jdk-slim
 
 ARG SPARK_VER=2.4.7
 
@@ -6,6 +7,10 @@ WORKDIR /root
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
 
 # Install a base time build environment
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -15,6 +20,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 	git \
 	libpng-dev \
 	libfreetype6-dev \
+        bash \
 	pkg-config \
 	python3 \
 	python3-dev \
@@ -31,9 +37,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 # Get the latest pip3
 # RUN wget -q https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm -f get-pip.py
 
-# Install python3 infrastructure
-COPY requirements.txt .
-RUN pip3 --no-cache-dir install -r requirements.txt && rm -f requirements.txt
+RUN pip3 --no-cache-dir install pyspark findspark
 
 # Install Spark dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -67,7 +71,7 @@ COPY hadoop-aws-2.7.3.jar $SPARK_HOME/jars/
 COPY jets3t-0.9.4.jar $SPARK_HOME/jars/
 COPY java-xmlbuilder-1.3.jar $SPARK_HOME/jars/
 
-COPY $SPARK_HOME/kubernetes/dockerfiles/spark/entrypoint.sh /opt/
+RUN cp $SPARK_HOME/kubernetes/dockerfiles/spark/entrypoint.sh /opt/
 
 # Use bash instead of sh
 SHELL ["/bin/bash", "-c"]

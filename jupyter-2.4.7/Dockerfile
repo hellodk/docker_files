@@ -12,7 +12,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   wget \
   python3-pip \
   vim && \
-    apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+  apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
 
 # Get the latest pip3
 #RUN wget -q https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm -f get-pip.py
@@ -29,7 +30,7 @@ RUN echo "c.TerminalInteractiveShell.editing_mode = 'vi'" >> ~/.ipython/profile_
 EXPOSE 4040 4041 8080 8888 
 
 COPY python /opt/spark/python
-COPY conf /opt/spark/python
+COPY conf /opt/spark/conf
 
 ARG TF_SERVING_VERSION=0.0.0
 ARG TF_SERVING_VERSION=0.0.0
@@ -40,7 +41,7 @@ ENV NB_USER $NB_USER
 ENV NB_UID 1000
 ENV HOME /home/$NB_USER
 ENV NB_PREFIX /
-ENV PATH $HOME/.local/bin:$PATH
+ENV PATH $HOME/.local/bin:/usr/local/openjdk-8/bin/:/usr/local/bin:$PATH
 
 # Required spark configuration for local user access
 ENV SPARK_HOME=/opt/spark
@@ -50,10 +51,10 @@ ENV PYTHONPATH=/opt/spark/python:/opt/spark/python/lib/py4j-0.10.7-src.zip
 #ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 #ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/spark/bin
 
-COPY aws-java-sdk-1.11.30.jar $SPARK_HOME/jars/
-COPY hadoop-aws-2.7.3.jar $SPARK_HOME/jars/
-COPY jets3t-0.9.4.jar $SPARK_HOME/jars/
-COPY java-xmlbuilder-1.3.jar $SPARK_HOME/jars/
+ADD aws-java-sdk-1.7.4.jar $SPARK_HOME/jars/
+ADD hadoop-aws-2.7.3.jar $SPARK_HOME/jars/
+ADD jets3t-0.9.4.jar $SPARK_HOME/jars/
+ADD java-xmlbuilder-1.3.jar $SPARK_HOME/jars/
 
 # Use bash instead of sh
 SHELL ["/bin/bash", "-c"]
