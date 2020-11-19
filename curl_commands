@@ -1,0 +1,43 @@
+    8  wget https://www.apache.org/dyn/closer.lua/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
+    9  yum install -y wget
+   10  wget https://www.apache.org/dyn/closer.lua/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
+   14  wget http://mirror.olnevhost.net/pub/apache/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
+  122  wget https://github.com/hellodk/docker_files/blob/master/java8/aws-java-sdk-1.7.4.jar
+  123  wget https://github.com/hellodk/docker_files/blob/master/java8/hadoop-aws-2.7.3.jar
+  124  wget https://github.com/hellodk/docker_files/blob/master/java8/java-xmlbuilder-1.3.jar
+  125  wget https://github.com/hellodk/docker_files/blob/master/java8/jets3t-0.9.4.jar
+  202  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.30.jar
+  231  yum install git wget curl -y
+  294  sudo wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar
+  299  wget https://github.com/hellodk/docker_files/blob/master/java8/aws-java-sdk-1.7.4.jar
+  327  wget https://github.com/hellodk/docker_files/blob/master/java8/jets3t-0.9.4.jar
+  475  sudo wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar
+  479  wget https://github.com/hellodk/docker_files/blob/master/java8/hadoop-aws-2.7.3.jar
+  483  wget https://github.com/hellodk/docker_files/blob/master/java8/hadoop-aws-2.7.3.jar
+  506  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/aws-java-sdk-1.11.30.jar
+  508  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.30.jar
+  509  wget https://repo1.maven.org/maven2/com/jamesmurty/utils/java-xmlbuilder/1.3/java-xmlbuilder-1.3.jar
+  517  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
+  520  wget https://repo1.maven.org/maven2/net/java/dev/jets3t/jets3t/0.9.4/jets3t-0.9.4.jar
+  560  history | grep -i wget
+  624  wget https://www.apache.org/dyn/closer.lua/spark/spark-3.0.1/spark-3.0.1-bin-hadoop3.2.tgz
+  641  wget https://www.apache.org/dyn/closer.lua/spark/spark-3.0.1/spark-3.0.1-bin-hadoop3.2.tgz
+  645  wget https://mirrors.estointernet.in/apache/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz
+  664  wget https://mirrors.estointernet.in/apache/spark/spark-3.0.1/spark-3.0.1-bin-hadoop3.2.tgz
+  682  history | grep -i wget
+  689  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar
+  696  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.30.jar
+  700  wget https://repo1.maven.org/maven2/net/java/dev/jets3t/jets3t/0.9.4/jets3t-0.9.4.jar
+  701  wget https://repo1.maven.org/maven2/com/jamesmurty/utils/java-xmlbuilder/1.3/java-xmlbuilder-1.3.jar
+  799  wget https://repo1.maven.org/maven2/net/java/dev/jets3t/jets3t/0.9.4/jets3t-0.9.4.jar
+  800  wget https://repo1.maven.org/maven2/com/jamesmurty/utils/java-xmlbuilder/1.3/java-xmlbuilder-1.3.jar
+  801  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar
+  802  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/aws-java-sdk-1.11.30.jar
+  803  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.30.jar
+  804  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
+  805  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar
+  807  wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/aws-java-sdk-1.11.30.jar
+  813  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.30.jar
+  816  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.30/aws-java-sdk-1.11.834.jar
+  818  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.874/aws-java-sdk-bundle-1.11.874.jar
+  834  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.874/aws-java-sdk-bundle-1.11.874.jar
