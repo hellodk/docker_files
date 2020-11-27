@@ -18,8 +18,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # Get the latest pip3
 #RUN wget -q https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm -f get-pip.py
-RUN pip3 install --no-cache-dir jupyter matplotlib jupyterlab numpy pandas pyspark findspark awscli
-
+RUN pip3 install --no-cache-dir jupyter matplotlib jupyterlab numpy pandas pyspark findspark awscli pyarrow pandas numpy boto3 tqdm s3fs keras==2.2.4 tensorflow==1.14.0 h5py==2.10.0
 RUN jupyter notebook --generate-config
 RUN sed -i -E 's,^#\s*c.NotebookApp.terminado_settings.*,c.NotebookApp.terminado_settings = {"shell_command" : ["\/bin\/bash"]},g' ~/.jupyter/jupyter_notebook_config.py
 
